@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
 
   get '/routes', to: 'routes#index'
+  get '/routes/:id', to: 'routes#show'
 end

@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-24T15:52:15-06:00">2022-08-24T15:52:15-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-08-24T17:40:54-06:00">2022-08-24T17:40:54-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,7 +23,7 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.11%
+  98.28%
 </span>
 
      </span>
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>19</b> files in total.
+    <b>20</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>53</b> relevant lines,
-    <span class="green"><b>52</b> lines covered</span> and
+    <b>58</b> relevant lines,
+    <span class="green"><b>57</b> lines covered</span> and
     <span class="red"><b>1</b> lines missed. </span>
     (<span class="green">
-  98.11%
+  98.28%
 </span>
 )
   </div>
@@ -82,9 +82,9 @@
           </tr>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#545d622930c9969e2e3519260d463e45e3dc044f" class="src_link" title="app/controllers/crags_controller.rb">app/controllers/crags_controller.rb</a></td>
+            <td class="strong t-file__name"><a href="#d3af8b1224ba0f72d4f51945814adde31a3f9dd8" class="src_link" title="app/controllers/routes_controller.rb">app/controllers/routes_controller.rb</a></td>
             <td class="red strong cell--number t-file__coverage">80.00 %</td>
-            <td class="cell--number">19</td>
+            <td class="cell--number">9</td>
             <td class="cell--number">5</td>
             <td class="cell--number">4</td>
             <td class="cell--number">1</td>
@@ -118,8 +118,19 @@
             <td class="strong t-file__name"><a href="#ed8d7638b53f99a64164c9f218dc84a26f07960a" class="src_link" title="app/models/crag.rb">app/models/crag.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">3</td>
-            <td class="cell--number">1</td>
-            <td class="cell--number">1</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#05e02abb5f95785b1c4ea7e2d0f6a47e2d3afbfe" class="src_link" title="app/models/route.rb">app/models/route.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">2</td>
+            <td class="cell--number">2</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -271,9 +282,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#713442c3cd18ae3c48f061be217196e719a7229d" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">9</td>
             <td class="cell--number">5</td>
-            <td class="cell--number">3</td>
-            <td class="cell--number">3</td>
+            <td class="cell--number">5</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -349,9 +360,9 @@
 </div>
 
       
-        <div class="source_table" id="545d622930c9969e2e3519260d463e45e3dc044f">
+        <div class="source_table" id="d3af8b1224ba0f72d4f51945814adde31a3f9dd8">
   <div class="header">
-    <h3>app/controllers/crags_controller.rb</h3>
+    <h3>app/controllers/routes_controller.rb</h3>
     <h4>
       <span class="red">
   80.0%
@@ -382,7 +393,7 @@
 
             
 
-            <code class="ruby">class CragsController &lt; ApplicationController</code>
+            <code class="ruby">class RoutesController &lt; ApplicationController</code>
           </li>
         </div>
       
@@ -404,7 +415,7 @@
 
             
 
-            <code class="ruby">    @crags = Crag.all</code>
+            <code class="ruby">    @routes = Route.all</code>
           </li>
         </div>
       
@@ -426,7 +437,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -448,7 +459,7 @@
 
             
 
-            <code class="ruby">    @crag = Crag.find(params[:id])</code>
+            <code class="ruby">    @route = Route.find(params[:id])</code>
           </li>
         </div>
       
@@ -465,116 +476,6 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
-            
-
-            <code class="ruby">  # def new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="11">
-            
-            
-
-            
-
-            <code class="ruby">  # end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby">  # def create</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="14">
-            
-            
-
-            
-
-            <code class="ruby">    # crag = Crag.create({</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="15">
-            
-            
-
-            
-
-            <code class="ruby">    #   id: params[:id]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="16">
-            
-            
-
-            
-
-            <code class="ruby">    #   name: params[:crag][:name]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="17">
-            
-            
-
-            
-
-            <code class="ruby">    # })</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
-            
-
-            <code class="ruby">  # end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="19">
             
             
 
@@ -720,8 +621,8 @@
     
 
     <div class="t-line-summary">
-      <b>1</b> relevant lines.
-      <span class="green"><b>1</b> lines covered</span> and
+      <b>2</b> relevant lines.
+      <span class="green"><b>2</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -744,13 +645,77 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="2">
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby"> has_many :routes</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="3">
             
             
 
             
 
-            <code class="ruby"> </code>
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="05e02abb5f95785b1c4ea7e2d0f6a47e2d3afbfe">
+  <div class="header">
+    <h3>app/models/route.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>2</b> relevant lines.
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class Route &lt; ApplicationRecord</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby"> belongs_to :crag</code>
           </li>
         </div>
       
@@ -3222,8 +3187,8 @@
     
 
     <div class="t-line-summary">
-      <b>3</b> relevant lines.
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>5</b> relevant lines.
+      <span class="green"><b>5</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3280,6 +3245,50 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  get &#39;/routes&#39;, to: &#39;routes#index&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="8">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  get &#39;/routes/:id&#39;, to: &#39;routes#show&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
             
             
 
