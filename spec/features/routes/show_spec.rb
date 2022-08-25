@@ -35,4 +35,20 @@ RSpec.describe 'routes show page' do
     expect(page).to_not have_content(@route2.route_name)
     expect(page).to_not have_content(@route4.route_name)
   end
+
+  describe 'link on page for /routes' do
+    it 'has a link for /routes' do
+      visit "/routes/#{@route3.id}"
+      
+      expect(page).to have_link("Routes")
+    end
+    
+    it "when 'routes' link click, take user to /routes" do
+      visit "/routes/#{@route3.id}"
+
+      click_link "Routes"
+
+      expect(current_path).to eq('/routes')
+    end
+  end
 end
