@@ -15,10 +15,9 @@ RSpec.describe Crag, type: :model do
     it { should have_many(:routes) }
   end
 
-  describe "sorting crags by date created" do
-    it "sorting crags by date created" do
-      binding.pry
-      expect(crag.sort_crags).to eq([@crag1, @crag2])
+  describe "count the routes a crag has" do
+    it "counts routes" do
+      expect(@crag1.count_routes).to eq(2)
     end
   end
 end

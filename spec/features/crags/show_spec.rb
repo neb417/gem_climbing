@@ -22,12 +22,18 @@ RSpec.describe 'crags show page' do
   it 'displays the crag information' do
 
     visit "/crags/#{@crag2.id}"
-
+    
     expect(page).to have_content(@crag2.crag_name)
     expect(page).to have_content(@crag2.reservation_required)
     expect(page).to have_content(@crag2.elevation)
     expect(page).to_not have_content(@crag1.crag_name)
     expect(page).to_not have_content(@crag1.reservation_required)
     expect(page).to_not have_content(@crag1.elevation)
+  end
+  
+  it 'show the count of routes for a crag' do
+    visit "/crags/#{@crag2.id}"
+save_and_open_page
+    expect(page).to have_content("#{@crag2.crag_name} has #{@crag2.count_routes} routes.")
   end
 end

@@ -1,12 +1,12 @@
 class CragsController < ApplicationController
   def index
-    @crags = Crag.all
-    @crag_order = @crags.order(created_at: :desc)
+    @crags = Crag.all.order(created_at: :desc)
   end
 
   def show
     @crag = Crag.find(params[:id])
   end
+
   # def new
   # end
   
