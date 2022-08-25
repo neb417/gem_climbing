@@ -18,8 +18,19 @@ RSpec.describe 'crags show page' do
     expect(page).to have_content(@crag2.crag_name)
   end
   
-  xit 'displays the crag by most recent created first information' do
-    visit "/crags"
+  describe 'link on page for /routes' do
+    it 'has a link for /routes' do
+      visit "/crags/#{@crag1.id}/routes"
+      
+      expect(page).to have_link("Routes")
+    end
+    
+    it "when 'routes' link click, take user to /routes" do
+      visit "/crags/#{@crag2.id}/routes"
 
+      click_link "Routes"
+
+      expect(current_path).to eq('/routes')
+    end
   end
 end
