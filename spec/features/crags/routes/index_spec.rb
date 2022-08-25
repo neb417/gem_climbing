@@ -31,4 +31,20 @@ RSpec.describe 'crags show page' do
     expect(page).to_not have_content(@route1.route_name)
     expect(page).to_not have_content(@route2.route_name)
   end
+
+  describe 'link on page for /routes' do
+    it 'has a link for /routes' do
+      visit "/crags/#{@crag1.id}/routes"
+      
+      expect(page).to have_link("Routes")
+    end
+    
+    it "when 'routes' link click, take user to /routes" do
+      visit "/crags/#{@crag2.id}/routes"
+
+      click_link "Routes"
+
+      expect(current_path).to eq('/routes')
+    end
+  end
 end
