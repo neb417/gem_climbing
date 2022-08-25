@@ -33,7 +33,22 @@ RSpec.describe 'crags show page' do
   
   it 'show the count of routes for a crag' do
     visit "/crags/#{@crag2.id}"
-save_and_open_page
     expect(page).to have_content("#{@crag2.crag_name} has #{@crag2.count_routes} routes.")
+  end
+
+  describe 'link on page for /routes' do
+    it 'has a link for /routes' do
+      visit "/crags/#{@crag1.id}/routes"
+      
+      expect(page).to have_link("Routes")
+    end
+    
+    it "when 'routes' link click, take user to /routes" do
+      visit "/crags/#{@crag2.id}/routes"
+
+      click_link "Routes"
+
+      expect(current_path).to eq('/routes')
+    end
   end
 end
