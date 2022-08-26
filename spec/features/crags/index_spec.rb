@@ -11,12 +11,20 @@ RSpec.describe 'crags show page' do
     @route4 = @crag2.routes.create!(route_name: 'Cosmosis', sport_route: false, trad_route: true, pitches: 3, grade: "5.9")
   end
   
-  it 'displays the crag name' do
-    visit "/crags"
+  describe "list on page" do
+    it 'displays the crag name' do
+      visit "/crags"
+      
+      expect(page).to have_content(@crag1.crag_name)
+      expect(page).to have_content(@crag2.crag_name)
+    end
 
-    expect(page).to have_content(@crag1.crag_name)
-    expect(page).to have_content(@crag2.crag_name)
-  end
+    it 'sorts the crags by most recently created' do
+      visit "/crags"
+
+      expect(@crag2.crag_name).to appear_before(@crag1.crag_name)
+    end
+  end 
   
   describe 'link on page for /routes' do
     it 'has a link for /routes' do
@@ -32,21 +40,20 @@ RSpec.describe 'crags show page' do
 
       expect(current_path).to eq('/routes')
     end
+  end
 
-    describe 'link on page for crag/:id/routes' do
-      it 'has a link for crag/:id/routes' do
-        visit "/crags/#{@crag1.id}"
-        
-        expect(page).to have_link("Routes for #{@crag1.crag_name}")
-      end
+  describe 'link on page for crag/:id/routes' do
+    it 'has a link for crag/:id/routes' do
+      visit "/crags/#{@crag1.id}"
       
-      it "when 'Routes for Crag' link click, take user to crag/:id/routes" do
-        visit "/crags/#{@crag2.id}"
-  
-        click_link "Routes for #{@crag2.crag_name}"
+      expect(page).to have_link("Routes for #{@crag1.crag_name}")
+    end
+    
+    it "when 'Routes for Crag' link click, take user to crag/:id/routes" do
+      visit "/crags/#{@crag2.id}"
+      click_link "Routes for #{@crag2.crag_name}"
 
-        expect(current_path).to eq("/crags/#{@crag2.id}/routes")
-      end
+      expect(current_path).to eq("/crags/#{@crag2.id}/routes")
     end
   end
 end
