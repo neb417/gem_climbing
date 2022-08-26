@@ -4,6 +4,8 @@ class CreateCrags < ActiveRecord::Migration[5.2]
       t.string :crag_name
       t.boolean :reservation_required
       t.integer :elevation
+
+      t.timestamps
     end
   end
 end
