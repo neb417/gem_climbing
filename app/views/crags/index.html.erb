@@ -3,3 +3,4 @@
 <% @crags.each do |crag| %>
   <h3><%= crag.crag_name %></h3><a> Created at: <%= crag.created_at %></a>
 <% end %>
+<%= link_to "Create New Crag", "/crags/new" %>

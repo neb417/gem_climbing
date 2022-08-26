@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'crags show page' do
+RSpec.describe 'crags index page' do
   before :each do
     @crag1 = Crag.create!(crag_name: 'Redgarden Wall', reservation_required: true, elevation: 6800, created_at: "2022-08-20 14:28:59")
     @route1 = @crag1.routes.create!(route_name: 'Desdichado', sport_route: true, trad_route: false, pitches: 1, grade: "5.13d")
@@ -55,5 +55,28 @@ RSpec.describe 'crags show page' do
 
       expect(current_path).to eq("/crags/#{@crag2.id}/routes")
     end
+  end
+
+  describe 'link on page for /crags' do
+    it 'has a link for to create new crag' do
+      visit "/crags"
+      
+      expect(page).to have_link("Create New Crag")
+    end
+    
+    it "when 'Create New Crag' link click, take user to crags/new" do
+      visit "/crags"
+      click_link "Create New Crag"
+
+      expect(current_path).to eq("/crags/new")
+    end
+
+    it 'Form with crag attributes is generated'
+
+    it 'has a Create Crag submit button'
+
+    it 'redirects to /crags'
+
+    it 'displays new crag on /crags'
   end
 end

@@ -1,7 +1,10 @@
 class Crag < ApplicationRecord
  has_many :routes
  
- def count_routes
+  def count_routes
     routes.count
+  end
+
+  def new
   end
 end
