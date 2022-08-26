@@ -34,13 +34,13 @@ RSpec.describe 'crags show page' do
 
   describe 'link on page for /routes' do
     it 'has a link for /routes' do
-      visit "/crags/#{@crag1.id}/routes"
+      visit "/crags/#{@crag1.id}"
       
       expect(page).to have_link("Routes")
     end
     
     it "when 'routes' link click, take user to /routes" do
-      visit "/crags/#{@crag2.id}/routes"
+      visit "/crags/#{@crag2.id}"
 
       click_link "Routes"
 

@@ -32,5 +32,21 @@ RSpec.describe 'crags show page' do
 
       expect(current_path).to eq('/routes')
     end
+
+    describe 'link on page for crag/:id/routes' do
+      it 'has a link for crag/:id/routes' do
+        visit "/crags/#{@crag1.id}"
+        
+        expect(page).to have_link("Routes for #{@crag1.crag_name}")
+      end
+      
+      it "when 'Routes for Crag' link click, take user to crag/:id/routes" do
+        visit "/crags/#{@crag2.id}"
+  
+        click_link "Routes for #{@crag2.crag_name}"
+
+        expect(current_path).to eq("/crags/#{@crag2.id}/routes")
+      end
+    end
   end
 end
