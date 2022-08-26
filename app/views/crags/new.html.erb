@@ -1,1 +1,14 @@
 <h1>Create a New Crag Entry</h1>
+
+<form action="/crags" method="post">
+  <%# <input type="hidden" name="crag[id]" value="<%= form_authenticity_token %>
+  <h3>Enter information for the new Crag:</h3>
+  <a>Crag Name </a><input type='text' name='crag[crag_name]'/><br/>
+  <a>Reservation Required </a>
+  <input type='radio' id="true" name='crag[reservation_required]'/><label>Yes</label><br/>
+  <input type='radio' id="false" name='crag[reservation_required]'/><label>No</label><br/>
+  <a>Elevation of Crag </a><input type='number' name='crag[elevation]'/>
+<br/>
+<br/>
+  <input type='submit' value='Submit New Crag'/>
+</form>

@@ -9,6 +9,8 @@ RSpec.describe 'crags index page' do
     @crag2 = Crag.create!(crag_name: 'Bell Buttress', reservation_required: false, elevation: 7200, created_at: "2022-08-25 14:28:59")
     @route3 = @crag2.routes.create!(route_name: 'Verve', sport_route: true, trad_route: false, pitches: 1, grade: "5.13c")
     @route4 = @crag2.routes.create!(route_name: 'Cosmosis', sport_route: false, trad_route: true, pitches: 3, grade: "5.9")
+
+    @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
   
   describe "list on page" do
@@ -67,15 +69,27 @@ RSpec.describe 'crags index page' do
     it "when 'Create New Crag' link click, take user to crags/new" do
       visit "/crags"
       click_link "Create New Crag"
-
+      
       expect(current_path).to eq("/crags/new")
     end
-
-    it 'Form with crag attributes is generated'
-
-    it 'has a Create Crag submit button'
-
-    it 'redirects to /crags'
+    
+    it 'Form with crag attributes is generated' do
+      visit "/crags/new"
+      
+      expect(page).to have_content("Reservation Required")
+      expect(page).to_not have_content('Grade')
+    end
+    
+    it 'has a Create Crag submit button' do
+      visit "/crags/new"
+      
+      expect(page).to have_button("Submit New Crag")
+    end
+    
+    it 'redirects to /crags' do
+      visit "/crags/new"
+save_and_open_page
+    end
 
     it 'displays new crag on /crags'
   end
