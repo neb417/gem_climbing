@@ -9,11 +9,14 @@ class CragsController < ApplicationController
 
   def new
   end
-  
-  # def create
-    # crag = Crag.create!({
-    #   id: params[:id]
-    #   name: params[:crag][:name]
-    # })
-  # end
+
+  def create
+    crag = Crag.create!(crag_params)
+    
+    redirect_to '/crags'
+  end
+
+  def crag_params
+    params.permit(:crag_name, :reservation_required, :elevation)
+  end
 end
