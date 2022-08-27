@@ -35,16 +35,32 @@ RSpec.describe 'crags show page' do
   describe 'link on page for /routes' do
     it 'has a link for /routes' do
       visit "/crags/#{@crag1.id}"
-      
+
       expect(page).to have_link("Routes")
     end
-    
+
     it "when 'routes' link click, take user to /routes" do
       visit "/crags/#{@crag2.id}"
 
       click_link "Routes"
 
       expect(current_path).to eq('/routes')
+    end
+
+    describe 'link on page to alphabetize routes' do
+      it 'has a link to alphabetize' do
+        visit "/crags/#{@crag1.id}/routes"
+  
+        expect(page).to have_link("Alphabetize Routes")
+      end
+  
+      it "alphabetize link click, index page in alphabetical order" do
+        visit "/crags/#{@crag2.id}/routes"
+
+        click_link "Alphabetize Routes"
+        expect(current_path).to eq("/crags/#{@crag2.id}/routes")
+        expect(@route4.route_name).to appear_before(@route3.route_name)
+      end
     end
   end
 end

@@ -17,7 +17,8 @@ class RoutesController < ApplicationController
     redirect_to "/routes/#{route.id}"
   end
 
-private
+  private
+
   def route_params
     params.permit(:route_name, :sport_route, :trad_route, :pitches, :grade)
   end

@@ -1,4 +1,5 @@
 <h1>Routes for <%= @crag.crag_name %></h1>
+<%= link_to "Alphabetize Routes", "/crags/#{@crag.id}/routes?alphabetize=true" %>
 <div><% @crag_routes.each do |route| %>
 <h3><%= route.route_name %></h3>
 <p>Grade - <%= route.grade %></p>

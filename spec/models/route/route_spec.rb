@@ -19,8 +19,7 @@ RSpec.describe Route, type: :model do
   end
 
   describe "displays sport/trad routes" do
-    xit 'collects sport routes' do
-      binding.pry
+    xit 'collects sport routes' do    
       expect(route.sport_routes).to eq([@route1,@route3])
     end
 
