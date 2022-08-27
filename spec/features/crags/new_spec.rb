@@ -33,6 +33,7 @@ RSpec.describe 'creates new crag' do
       visit '/crags/new'
 
       click_button 'Create Crag'
+
       expect(current_path).to eq('/crags')
     end
 
@@ -44,7 +45,6 @@ RSpec.describe 'creates new crag' do
       fill_in('Elevation', with: 5700)
 
       click_button 'Create Crag'
-
       expect(current_path).to eq('/crags')
       expect(page).to have_content('The Dome')
     end

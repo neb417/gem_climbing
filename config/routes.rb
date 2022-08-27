@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   patch '/crags/:id', to: 'crags#update'
 
   get '/crags/:id/routes', to: 'crag_routes#index'
+  get '/crags/:id/routes/new', to: 'crag_routes#new'
+  post '/crags/:id/routes', to: 'crag_routes#create'
 
   get '/routes', to: 'routes#index'
   get '/routes/:id', to: 'routes#show'

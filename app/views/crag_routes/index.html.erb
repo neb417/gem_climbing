@@ -4,7 +4,9 @@
 <p>Grade - <%= route.grade %></p>
 <p>Sport Route: <%= route.sport_route %></p>
 <p>Trad Route: <%= route.trad_route %></p>
-<p>Number of Pitches<%= route.pitches %></p>
+<p>Number of Pitches: <%= route.pitches %></p>
 <p>Created: <%= route.created_at %>,
    Last Updated: <%= route.updated_at %></p>
 <% end  %></div>
+<br/>
+<%= link_to "Add a route to #{@crag.crag_name}", "/crags/#{@crag.id}/routes/new" %>
