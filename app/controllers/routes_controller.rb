@@ -1,6 +1,6 @@
 class RoutesController < ApplicationController
   def index
-    @routes = Route.all
+    @routes = Route.where(sport_route: true)
   end
   
   def show
