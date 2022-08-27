@@ -98,8 +98,6 @@ RSpec.describe 'crags index page' do
       visit '/crags/new'
 
       fill_in('Crag Name', with: 'The Dome')
-      # choose 'reservation_required_valuetrue'
-      # choose 'reservation_required'
       choose 'Reservation Required'
       fill_in('Elevation', with: 5700)
 

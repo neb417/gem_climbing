@@ -12,8 +12,18 @@ class CragsController < ApplicationController
 
   def create
     crag = Crag.create!(crag_params)
-    
     redirect_to '/crags'
+  end
+
+  def edit
+    @crag = Crag.find(params[:id])
+  end
+
+  def update
+    crag = Crag.find(params[:id])
+    crag.update(crag_params)
+    
+    redirect_to "/crags/#{crag.id}"
   end
 
   def crag_params

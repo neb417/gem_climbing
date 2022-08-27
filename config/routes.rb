@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/crags/new', to: 'crags#new'
   post '/crags', to: 'crags#create'
   get '/crags/:id', to: 'crags#show'
+  get '/crags/:id/edit', to: 'crags#edit'
+  patch '/crags/:id', to: 'crags#update'
+
   get '/crags/:id/routes', to: 'crag_routes#index'
 
   get '/routes', to: 'routes#index'

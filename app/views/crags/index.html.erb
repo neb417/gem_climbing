@@ -3,7 +3,10 @@
 <% @crags.each do |crag| %>
   <h3><%= crag.crag_name %> Created: <%= crag.created_at %></h3>
   <p>Reservations Required: <%= crag.reservation_required %></p>
-  <p>Elevation: <%= crag.elevation %>
+  <p>Elevation: <%= crag.elevation%>
+  <p>Crag Id: <%= crag.id %>
+  <p>Last Updated: <%= crag.updated_at %>
 <% end %>
-
+<br/>
+<br/>
 <%= link_to "Create New Crag", "/crags/new" %>
