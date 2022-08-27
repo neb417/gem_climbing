@@ -14,6 +14,7 @@ class CragRoutesController < ApplicationController
     redirect_to "/crags/#{crag.id}/routes"
   end
 
+private
   def route_params
     params.permit(:route_name, :sport_route, :trad_route, :pitches, :grade)
   end

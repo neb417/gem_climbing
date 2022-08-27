@@ -6,3 +6,5 @@
 <p>Created: <%= @route.created_at %></p>
 <p>Updated: <%= @route.updated_at %></p>
 <p>Route Id: <%= @route.crag_id %> </p>
+<br/>
+<%= link_to "Edit #{@route.route_name}", "/routes/#{@route.id}/edit" %>

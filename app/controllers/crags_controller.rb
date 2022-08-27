@@ -22,10 +22,11 @@ class CragsController < ApplicationController
   def update
     crag = Crag.find(params[:id])
     crag.update(crag_params)
-    
+
     redirect_to "/crags/#{crag.id}"
   end
 
+private
   def crag_params
     params.permit(:crag_name, :reservation_required, :elevation)
   end
