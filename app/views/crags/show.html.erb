@@ -6,3 +6,4 @@
 <br/>
 <br/>
 <%= link_to "Edit #{@crag.crag_name}", "/crags/#{@crag.id}/edit" %>
+<%= button_to "Delete #{@crag.crag_name} and Routes", "/crags/#{@crag.id}", method: :delete %>

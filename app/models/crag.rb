@@ -1,5 +1,5 @@
 class Crag < ApplicationRecord
-  has_many :routes
+  has_many :routes, dependent: :destroy
 
   def count_routes
     routes.count

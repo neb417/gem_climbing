@@ -22,8 +22,12 @@ class CragsController < ApplicationController
   def update
     crag = Crag.find(params[:id])
     crag.update(crag_params)
-
     redirect_to "/crags/#{crag.id}"
+  end
+
+  def destroy
+    Crag.destroy(params[:id])
+    redirect_to "/crags"
   end
 
 private

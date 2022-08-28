@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/crags/:id', to: 'crags#show'
   get '/crags/:id/edit', to: 'crags#edit'
   patch '/crags/:id', to: 'crags#update'
+  delete '/crags/:id', to: 'crags#destroy'
 
   get '/crags/:id/routes', to: 'crag_routes#index'
   get '/crags/:id/routes/new', to: 'crag_routes#new'
