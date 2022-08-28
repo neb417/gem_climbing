@@ -3,3 +3,6 @@
 <p>Reservation Required: <%= @crag.reservation_required %></p>
 <p>Elevation : <%= @crag.elevation%> ft.</p>
 <p> Created on: <%= @crag.created_at%>, Updated on: <%= @crag.updated_at%>
+<br/>
+<br/>
+<%= link_to "Edit #{@crag.crag_name}", "/crags/#{@crag.id}/edit" %>

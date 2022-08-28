@@ -1,9 +1,10 @@
 <h1>Route Name:  <%= @route.route_name %> </h1>
-<p><%= @route.route_name %></p>
-<p><%= @route.sport_route %></p>
-<p><%= @route.trad_route %></p>
-<p><%= @route.pitches %></p>
-<p><%= @route.grade %></p>
-<p><%= @route.created_at %></p>
-<p><%= @route.updated_at %></p>
-<p><%= @route.crag_id %></p>
+<p>Is a sport route: <%=@route.sport_route %></p>
+<p>Is a trad route: <%= @route.trad_route %></p>
+<p>Number of pitches: <%= @route.pitches %></p>
+<p>Grade: <%= @route.grade %></p>
+<p>Created: <%= @route.created_at %></p>
+<p>Updated: <%= @route.updated_at %></p>
+<p>Route Id: <%= @route.crag_id %> </p>
+<br/>
+<%= link_to "Edit #{@route.route_name}", "/routes/#{@route.id}/edit" %>

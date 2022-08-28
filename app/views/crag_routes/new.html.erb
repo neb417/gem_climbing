@@ -1,0 +1,23 @@
+
+<%= form_with url:"/crags/#{@crag.id}/routes", method: :post, local: true do |form| %>
+  <%= form.label :route_name,"Route Name" %>
+  <%= form.text_field :route_name %>
+<br/>
+  <%= form.label :sport_route_true, "Is a Sport Route"%>
+  <%= form.radio_button :sport_route, true %>
+  <%= form.label :sport_route_false, "Not a Sport Route"%>
+  <%= form.radio_button :sport_route, false %>
+<br/>
+  <%= form.label :trad_route_true, "Is a Trad Route"%>
+  <%= form.radio_button :trad_route, true%>
+  <%= form.label :trad_route_false, "Not a Trad Route"%>
+  <%= form.radio_button :trad_route, false%>
+<br/>
+  <%= form.label :pitches, "Number of Pitches" %>
+  <%= form.text_field :pitches %>
+<br/>
+  <%= form.label :grade, "Grade" %>
+  <%= form.text_field :grade %>
+<br/>
+  <%= form.submit "Add Route" %>
+<% end %>

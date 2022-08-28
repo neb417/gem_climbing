@@ -1,9 +1,11 @@
 <h1>Gem Routes</h1>
 
 <% @routes.each do |route| %>
-  <h3><%= route.route_name %></h3>
+  <h3><%= route.route_name %> <%= link_to "Edit #{route.route_name}", "/routes/#{route.id}/edit" %></h3>
    <p>Sport Route: <%= route.sport_route %></p>
    <p>Trad Route: <%= route.trad_route %></p>
    <p>Number of Pitches: <%= route.pitches %></p>
    <p>Grade: <%= route.grade %> </p>
+   <p>Created: <%= route.created_at %> </p>
+   <p>Updated: <%= route.updated_at %> </p>
 <% end %>

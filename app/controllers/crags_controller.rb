@@ -7,13 +7,27 @@ class CragsController < ApplicationController
     @crag = Crag.find(params[:id])
   end
 
-  # def new
-  # end
-  
-  # def create
-    # crag = Crag.create({
-    #   id: params[:id]
-    #   name: params[:crag][:name]
-    # })
-  # end
+  def new
+  end
+
+  def create
+    crag = Crag.create!(crag_params)
+    redirect_to '/crags'
+  end
+
+  def edit
+    @crag = Crag.find(params[:id])
+  end
+
+  def update
+    crag = Crag.find(params[:id])
+    crag.update(crag_params)
+
+    redirect_to "/crags/#{crag.id}"
+  end
+
+private
+  def crag_params
+    params.permit(:crag_name, :reservation_required, :elevation)
+  end
 end
