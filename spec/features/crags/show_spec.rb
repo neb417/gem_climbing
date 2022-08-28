@@ -64,19 +64,22 @@ RSpec.describe 'crags show page' do
       expect(page).to have_content(@crag1.crag_name)
       expect(page).to have_content(@crag1.reservation_required)
       expect(page).to have_content(@crag1.elevation)
-
+      
       visit "/routes"
-
+      
       expect(page).to have_content(@route1.route_name)
-
+      
       visit "/crags/#{@crag1.id}"
-
+      
       click_button "Delete #{@crag1.crag_name} and Routes"
-
+      
       expect(current_path).to eq("/crags")
       expect(page).to_not have_content(@crag1.crag_name)
       expect(page).to_not have_content(@crag1.reservation_required)
       expect(page).to_not have_content(@crag1.elevation)
+      expect(page).to have_content(@crag2.crag_name)
+      expect(page).to have_content(@crag2.reservation_required)
+      expect(page).to have_content(@crag2.elevation)
 
       visit "/routes"
       expect(page).to_not have_content(@route1.route_name)

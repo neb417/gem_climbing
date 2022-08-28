@@ -45,10 +45,34 @@ RSpec.describe 'routes show page' do
     
     it "when 'routes' link click, take user to /routes" do
       visit "/routes/#{@route3.id}"
-
+      
       click_link "Routes"
-
+      
       expect(current_path).to eq('/routes')
+    end
+  end
+  
+  describe 'deleting routes from show page' do
+    it 'has a button to delete' do
+      visit "/routes/#{@route1.id}"
+
+      expect(page).to have_button("Delete #{@route1.route_name}")
+    end
+
+    it 'removes the crag and routes from site' do
+      visit "/routes"
+
+      expect(page).to have_content(@route1.route_name)
+
+      visit "/routes/#{@route1.id}"
+
+      click_button "Delete #{@route1.route_name}"
+
+      expect(current_path).to eq("/routes")
+      expect(page).to_not have_content(@route1.route_name)
+      expect(page).to_not have_content(@route1.grade)
+      expect(page).to have_content(@route3.route_name)
+      expect(page).to have_content(@route3.grade)
     end
   end
 end

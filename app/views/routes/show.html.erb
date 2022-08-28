@@ -8,3 +8,4 @@
 <p>Route Id: <%= @route.crag_id %> </p>
 <br/>
 <%= link_to "Edit #{@route.route_name}", "/routes/#{@route.id}/edit" %>
+<%= button_to "Delete #{@route.route_name}", "/routes/#{@route.id}", method: :delete %>
