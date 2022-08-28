@@ -8,4 +8,5 @@
    <p>Grade: <%= route.grade %> </p>
    <p>Created: <%= route.created_at %> </p>
    <p>Updated: <%= route.updated_at %> </p>
+   <%= button_to "Delete #{route.route_name}", "/routes/#{route.id}", method: :delete %>
 <% end %>
