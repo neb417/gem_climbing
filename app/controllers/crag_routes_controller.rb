@@ -1,21 +1,23 @@
 class CragRoutesController < ApplicationController
   def index
     @crag = Crag.find(params[:id])
-
-    if params[:alphabetize] == "true"
+    case
+    when params[:alphabetize]
       @crag_routes = @crag.routes.order(:route_name)
+    when params[:pitches]
+      @crag_routes = @crag.routes.where("pitches >= ?", params[:pitches].to_i)
     else
       @crag_routes = @crag.routes
     end
   end
-  
+
   def new
     @crag = Crag.find(params[:id])
   end
-  
+
   def create
     crag = Crag.find(params[:id])
-    route = crag.routes.create!(route_params)
+    crag.routes.create!(route_params)
     redirect_to "/crags/#{crag.id}/routes"
   end
 

@@ -12,7 +12,7 @@ RSpec.describe 'crags show page' do
   end
   it 'displays the crag name' do
     visit "/crags/#{@crag1.id}/routes"
-    
+
     expect(page).to have_content(@crag1.crag_name)
     expect(page).to_not have_content(@crag2.crag_name)
   end
@@ -46,21 +46,41 @@ RSpec.describe 'crags show page' do
 
       expect(current_path).to eq('/routes')
     end
+  end
 
-    describe 'link on page to alphabetize routes' do
-      it 'has a link to alphabetize' do
-        visit "/crags/#{@crag1.id}/routes"
-  
-        expect(page).to have_link("Alphabetize Routes")
-      end
-  
-      it "alphabetize link click, index page in alphabetical order" do
-        visit "/crags/#{@crag2.id}/routes"
+  describe 'link on page to alphabetize routes' do
+    it 'has a link to alphabetize' do
+      visit "/crags/#{@crag1.id}/routes"
 
-        click_link "Alphabetize Routes"
-        expect(current_path).to eq("/crags/#{@crag2.id}/routes")
-        expect(@route4.route_name).to appear_before(@route3.route_name)
-      end
+      expect(page).to have_link("Alphabetize Routes")
+    end
+
+    it "alphabetize link click, index page in alphabetical order" do
+      visit "/crags/#{@crag2.id}/routes"
+
+      click_link "Alphabetize Routes"
+      expect(current_path).to eq("/crags/#{@crag2.id}/routes")
+      expect(@route4.route_name).to appear_before(@route3.route_name)
+    end
+  end
+  
+  describe 'input field to submit minimum pitches for crag' do
+    it 'the input field is there with submit button' do
+      visit "/crags/#{@crag1.id}/routes"
+
+      expect(page).to have_content("Minimum number of pitches")
+      expect(page).to have_button("Submit")
+    end
+
+    it 'filter the pitches and returns crags with pitches >= input' do
+      visit "/crags/#{@crag1.id}/routes"
+
+      fill_in "Minimum number of pitches", with: 2
+
+      click_button "Submit"
+
+      expect(page).to have_content(@route2.route_name)
+      expect(page).to_not have_content(@route1.route_name)
     end
   end
 end

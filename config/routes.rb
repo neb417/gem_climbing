@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/crags/:id', to: 'crags#destroy'
 
   get '/crags/:id/routes', to: 'crag_routes#index'
+  post '/crags/:id/routes/min_pitches', to: 'crag_routes#index'
   get '/crags/:id/routes/new', to: 'crag_routes#new'
   post '/crags/:id/routes', to: 'crag_routes#create'
 
