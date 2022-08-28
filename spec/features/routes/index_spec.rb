@@ -38,4 +38,28 @@ RSpec.describe 'crags index page' do
       expect(current_path).to eq("/routes/#{@route3.id}/edit")
     end
   end
+
+  describe 'deleting routes from show page' do
+    it 'has a button to delete' do
+      visit "/routes/"
+
+      expect(page).to have_button("Delete #{@route1.route_name}")
+      expect(page).to have_button("Delete #{@route3.route_name}")
+    end
+
+    it 'removes the crag and routes from site' do
+      visit "/routes"
+
+      expect(page).to have_content(@route1.route_name)
+      expect(page).to have_content(@route3.route_name)
+
+      click_button "Delete #{@route1.route_name}"
+
+      expect(current_path).to eq("/routes")
+      expect(page).to_not have_content(@route1.route_name)
+      expect(page).to_not have_content(@route1.grade)
+      expect(page).to have_content(@route3.route_name)
+      expect(page).to have_content(@route3.grade)
+    end
+  end
 end

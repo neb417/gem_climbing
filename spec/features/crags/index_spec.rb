@@ -72,4 +72,47 @@ RSpec.describe 'crags index page' do
       expect(current_path).to eq("/crags/#{@crag3.id}/edit")
     end
   end
+
+  describe 'deleting crags from show page' do
+    it 'has a button to delete' do
+      visit "/crags"
+
+      expect(page).to have_button("Delete #{@crag1.crag_name} and Routes")
+      expect(page).to have_button("Delete #{@crag2.crag_name} and Routes")
+      expect(page).to have_button("Delete #{@crag3.crag_name} and Routes")
+    end
+
+    it 'removes the crag and routes from site' do
+      visit "/routes"
+      
+      expect(page).to have_content(@route1.route_name)
+      expect(page).to have_content(@route3.route_name)
+
+      visit "/crags"
+
+      expect(page).to have_content(@crag1.crag_name)
+      expect(page).to have_content(@crag1.reservation_required)
+      expect(page).to have_content(@crag1.elevation)
+      expect(page).to have_content(@crag2.crag_name)
+      expect(page).to have_content(@crag2.reservation_required)
+      expect(page).to have_content(@crag2.elevation)
+      expect(page).to have_content(@crag3.crag_name)
+      expect(page).to have_content(@crag3.reservation_required)
+      expect(page).to have_content(@crag3.elevation)
+
+      click_button "Delete #{@crag1.crag_name} and Routes"
+
+      expect(current_path).to eq("/crags")
+      expect(page).to_not have_content(@crag1.crag_name)
+      expect(page).to_not have_content(@crag1.reservation_required)
+      expect(page).to_not have_content(@crag1.elevation)
+      expect(page).to have_content(@crag2.crag_name)
+      expect(page).to have_content(@crag2.reservation_required)
+      expect(page).to have_content(@crag2.elevation)
+
+      visit "/routes"
+      expect(page).to_not have_content(@route1.route_name)
+      expect(page).to have_content(@route3.route_name)
+    end
+  end
 end

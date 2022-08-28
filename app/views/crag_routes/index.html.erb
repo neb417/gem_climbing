@@ -1,5 +1,10 @@
 <h1>Routes for <%= @crag.crag_name %></h1>
 <%= link_to "Alphabetize Routes", "/crags/#{@crag.id}/routes?alphabetize=true" %>
+<%= form_with url:"/crags/#{@crag.id}/routes/min_pitches", method: :post, local: true do |form| %>
+  <%= form.label :pitches, "Minimum number of pitches" %>
+  <%= form.number_field :pitches %>
+  <%= form.button "Submit" %>
+<% end %>
 <div><% @crag_routes.each do |route| %>
 <h3><%= route.route_name %></h3>
 <p>Grade - <%= route.grade %></p>

@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get '/crags/:id', to: 'crags#show'
   get '/crags/:id/edit', to: 'crags#edit'
   patch '/crags/:id', to: 'crags#update'
+  delete '/crags/:id', to: 'crags#destroy'
 
   get '/crags/:id/routes', to: 'crag_routes#index'
+  post '/crags/:id/routes/min_pitches', to: 'crag_routes#index'
   get '/crags/:id/routes/new', to: 'crag_routes#new'
   post '/crags/:id/routes', to: 'crag_routes#create'
 
@@ -15,4 +17,5 @@ Rails.application.routes.draw do
   get '/routes/:id', to: 'routes#show'
   get '/routes/:id/edit', to: 'routes#edit'
   patch '/routes/:id/', to: 'routes#update'
+  delete '/routes/:id/', to: 'routes#destroy'
 end
