@@ -1,7 +1,7 @@
 <h1>Gem Crags</h1>
 
 <% @crags.each do |crag| %>
-  <h3><%= crag.crag_name %> Created: <%= crag.created_at %></h3>
+  <h3><%= crag.crag_name %> Created: <%= crag.created_at %> <%= link_to "Edit #{crag.crag_name}", "/crags/#{crag.id}/edit" %></h3>
   <p>Reservations Required: <%= crag.reservation_required %></p>
   <p>Elevation: <%= crag.elevation%>
   <p>Crag Id: <%= crag.id %>

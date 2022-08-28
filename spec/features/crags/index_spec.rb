@@ -58,4 +58,18 @@ RSpec.describe 'crags index page' do
       expect(current_path).to eq("/crags/#{@crag2.id}/routes")
     end
   end
+
+  describe 'edit capabilities for crags' do
+    it 'links to the edit page' do
+      visit "/crags"
+      
+      expect(page).to have_link("Edit #{@crag1.crag_name}")
+      expect(page).to have_link("Edit #{@crag3.crag_name}")
+      expect(page).to have_link("Edit #{@crag2.crag_name}")
+
+      click_link "Edit The Dome"
+
+      expect(current_path).to eq("/crags/#{@crag3.id}/edit")
+    end
+  end
 end

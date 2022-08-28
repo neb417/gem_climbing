@@ -12,33 +12,34 @@ RSpec.describe 'crag edit' do
 
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
+  describe 'edit capabilities for crags' do
+    it 'links to the edit page' do
+      visit "/crags/#{@crag1.id}"
 
-  it 'links to the edit page' do
-    visit "/crags/#{@crag1.id}"
+      click_link  "Edit #{@crag1.crag_name}"
+      expect(current_path).to eq("/crags/#{@crag1.id}/edit")
+    end
 
-    click_link  "Edit #{@crag1.crag_name}"
-    expect(current_path).to eq("/crags/#{@crag1.id}/edit")
-  end
+    it 'can edit the crag' do
+      crag1 = Crag.create!(crag_name: 'Esster', reservation_required: true, elevation: 6800)
 
-  it 'can edit the crag' do
-    crag1 = Crag.create!(crag_name: 'Esster', reservation_required: true, elevation: 6800)
+      visit "/crags/#{crag1.id}"
 
-    visit "/crags/#{crag1.id}"
+      expect(page).to have_content('Esster')
 
-    expect(page).to have_content('Esster')
+      click_link "Edit Esster"
 
-    click_link "Edit Esster"
+      expect(current_path).to eq("/crags/#{crag1.id}/edit")
 
-    expect(current_path).to eq("/crags/#{crag1.id}/edit")
+      fill_in 'Crag Name', with: 'Easter Rock'
+      choose 'No Reservation Required'
+      fill_in 'Elevation', with: '5690'
+      click_button 'Update Crag'
 
-    fill_in 'Crag Name', with: 'Easter Rock'
-    choose 'No Reservation Required'
-    fill_in 'Elevation', with: '5690'
-    click_button 'Update Crag'
-
-    expect(current_path).to eq("/crags/#{crag1.id}")
-    expect(page).to have_content("Easter Rock")
-    expect(page).to have_content(false)
-    expect(page).to have_content(5690)
+      expect(current_path).to eq("/crags/#{crag1.id}")
+      expect(page).to have_content("Easter Rock")
+      expect(page).to have_content(false)
+      expect(page).to have_content(5690)
+    end
   end
 end

@@ -25,4 +25,17 @@ RSpec.describe 'crags index page' do
       expect(page).to_not have_content("Cosmosis")
     end
   end
+
+  describe 'Editing routes from route index page' do
+    it 'has a link on route show page to edit route that redirects' do
+      visit "/routes"
+
+      expect(page).to have_link("Edit #{@route1.route_name}")
+      expect(page).to have_link("Edit #{@route3.route_name}")
+
+      click_link "Edit #{@route3.route_name}"
+
+      expect(current_path).to eq("/routes/#{@route3.id}/edit")
+    end
+  end
 end

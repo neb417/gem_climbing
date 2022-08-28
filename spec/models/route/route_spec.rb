@@ -17,14 +17,4 @@ RSpec.describe Route, type: :model do
   describe "relationships" do
     it { should belong_to(:crag) }
   end
-
-  describe "displays sport/trad routes" do
-    xit 'collects sport routes' do    
-      expect(route.sport_routes).to eq([@route1,@route3])
-    end
-
-    xit "collects trad routes" do
-      expect(route.trad_routes).to eq([@route2,@route3,@route5])
-    end
-  end
 end
