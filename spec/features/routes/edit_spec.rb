@@ -14,7 +14,7 @@ RSpec.describe 'crag edit' do
     @route5 = @crag3.routes.create!(route_name: 'Umph Crack', sport_route: true, trad_route: false, pitches: 2, grade: "5.11")
   end
 
-  describe 'Editing routes' do
+  describe 'User Story 14 Editing routes' do
     it 'has a link on route show page to edit route that redirects' do
       visit "/routes/#{@route5.id}"
 

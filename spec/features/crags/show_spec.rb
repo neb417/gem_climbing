@@ -11,32 +11,36 @@ RSpec.describe 'crags show page' do
     @route4 = @crag2.routes.create!(route_name: 'Cosmosis', sport_route: false, trad_route: true, pitches: 3, grade: "5.9")
   end
 
-  it 'displays the crag name' do
+  describe 'User story 2' do
+    it 'displays the crag name' do
 
-    visit "/crags/#{@crag1.id}"
+      visit "/crags/#{@crag1.id}"
 
-    expect(page).to have_content(@crag1.crag_name)
-    expect(page).to_not have_content(@crag2.crag_name)
+      expect(page).to have_content(@crag1.crag_name)
+      expect(page).to_not have_content(@crag2.crag_name)
+    end
+
+    it 'displays the crag information' do
+
+      visit "/crags/#{@crag2.id}"
+
+      expect(page).to have_content(@crag2.crag_name)
+      expect(page).to have_content(@crag2.reservation_required)
+      expect(page).to have_content(@crag2.elevation)
+      expect(page).to_not have_content(@crag1.crag_name)
+      expect(page).to_not have_content(@crag1.reservation_required)
+      expect(page).to_not have_content(@crag1.elevation)
+    end
   end
 
-  it 'displays the crag information' do
-
-    visit "/crags/#{@crag2.id}"
-
-    expect(page).to have_content(@crag2.crag_name)
-    expect(page).to have_content(@crag2.reservation_required)
-    expect(page).to have_content(@crag2.elevation)
-    expect(page).to_not have_content(@crag1.crag_name)
-    expect(page).to_not have_content(@crag1.reservation_required)
-    expect(page).to_not have_content(@crag1.elevation)
+  describe "User Story 7" do
+    it 'show the count of routes for a crag' do
+      visit "/crags/#{@crag2.id}"
+      expect(page).to have_content("#{@crag2.crag_name} has #{@crag2.count_routes} routes.")
+    end
   end
 
-  it 'show the count of routes for a crag' do
-    visit "/crags/#{@crag2.id}"
-    expect(page).to have_content("#{@crag2.crag_name} has #{@crag2.count_routes} routes.")
-  end
-
-  describe 'link on page for /routes' do
+  describe 'User Story 10 link on page for /routes' do
     it 'has a link for /routes' do
       visit "/crags/#{@crag1.id}/routes"
 
@@ -52,7 +56,7 @@ RSpec.describe 'crags show page' do
     end
   end
 
-  describe 'deleting crags from show page' do
+  describe 'User Story 19 deleting crags from show page' do
     it 'has a button to delete' do
       visit "/crags/#{@crag1.id}"
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'creates new crag' do
-  describe 'link on page for /crags' do
+  describe 'User Story 11 link on page for /crags' do
     it 'has a link for to create new crag' do
       visit '/crags'
 
@@ -10,6 +10,7 @@ RSpec.describe 'creates new crag' do
 
     it "when 'Create New Crag' link click, take user to crags/new" do
       visit '/crags'
+      
       click_link 'Create New Crag'
 
       expect(current_path).to eq('/crags/new')
@@ -47,6 +48,40 @@ RSpec.describe 'creates new crag' do
       click_button 'Create Crag'
       expect(current_path).to eq('/crags')
       expect(page).to have_content('The Dome')
+    end
+  end
+
+  describe 'Error handling for not having inputs/incorrect inputs' do
+    it 'has page that displays message of incorrect info' do
+      visit '/crags/new'
+
+      click_button "Create Crag"
+
+      expect(current_path).to eq("/crags")
+      expect(page).to have_content("Crag not created: Required information missing")
+    end
+
+    it 'has page that displays message of incorrect info' do
+      visit '/crags/new'
+
+      fill_in("Crag Name", with: "The Dome")
+
+      click_button "Create Crag"
+
+      expect(current_path).to eq("/crags")
+      expect(page).to have_content("Crag not created: Required information missing")
+    end
+
+    it 'has page that displays message of incorrect info' do
+      visit '/crags/new'
+
+      fill_in("Crag Name", with: "The Dome")
+      choose "No Reservation Required"
+
+      click_button "Create Crag"
+
+      expect(current_path).to eq("/crags")
+      expect(page).to have_content("Crag Name")
     end
   end
 end

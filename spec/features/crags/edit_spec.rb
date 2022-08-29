@@ -12,7 +12,7 @@ RSpec.describe 'crag edit' do
 
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
-  describe 'edit capabilities for crags' do
+  describe 'User Story 12 edit capabilities for crags' do
     it 'links to the edit page' do
       visit "/crags/#{@crag1.id}"
 

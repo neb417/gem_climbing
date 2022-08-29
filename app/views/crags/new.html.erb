@@ -1,7 +1,13 @@
 
 <%= form_with url:'/crags', method: :post, local: true do |form| %>
-  <%= form.label :crag_name,'Crag Name' %>
-  <%= form.text_field :crag_name %>
+  <% if :crag_name == "" %>
+    <%= form.label :crag_name,'Crag Name' %>
+    <%= form.text_field :crag_name %>
+    <%= form.label :no_name, "Crag Name Required" %>
+  <% else %>
+      <%= form.label :crag_name,'Crag Name' %>
+      <%= form.text_field :crag_name %>
+  <% end %>
 <br/>
   <%= form.label :reservation_required_true, 'Reservation Required'%>
   <%= form.radio_button :reservation_required, true %>

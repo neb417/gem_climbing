@@ -14,14 +14,16 @@ RSpec.describe 'crags index page' do
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
 
-  describe 'list on page' do
+  describe 'User Story 1 list on page' do
     it 'displays the crag name' do
       visit '/crags'
 
       expect(page).to have_content(@crag1.crag_name)
       expect(page).to have_content(@crag2.crag_name)
     end
+  end
 
+  describe "User Story 6" do
     it 'sorts the crags by most recently created' do
       visit "/crags"
 
@@ -76,7 +78,7 @@ RSpec.describe 'crags index page' do
     end
   end
 
-  describe 'edit capabilities for crags' do
+  describe 'User Story 17 edit capabilities for crags' do
     it 'links to the edit page' do
       visit "/crags"
       
@@ -90,7 +92,7 @@ RSpec.describe 'crags index page' do
     end
   end
 
-  describe 'deleting crags from show page' do
+  describe 'User Story 22 deleting crags from show page' do
     it 'has a button to delete' do
       visit "/crags"
 
@@ -144,7 +146,7 @@ RSpec.describe 'crags index page' do
       expect(current_path).to eq("/crags")
     end
 
-    xit 'sorts routes by number of routes, high to low' do
+    it 'sorts routes by number of routes, high to low' do
       route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
 
       visit "/crags"
