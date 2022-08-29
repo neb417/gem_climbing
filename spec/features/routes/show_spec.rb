@@ -11,29 +11,31 @@ RSpec.describe 'routes show page' do
     @route4 = @crag2.routes.create!(route_name: 'Cosmosis', sport_route: false, trad_route: true, pitches: 3, grade: "5.9")
   end
 
-  it 'displays the route name' do
+  describe "User Story 4" do
+    it 'displays the route name' do
 
-    visit "/routes/#{@route1.id}"
+      visit "/routes/#{@route1.id}"
 
-    expect(page).to have_content(@route1.route_name)
-    expect(page).to_not have_content(@route2.route_name)
-  end
+      expect(page).to have_content(@route1.route_name)
+      expect(page).to_not have_content(@route2.route_name)
+    end
 
-  it 'displays the route information' do
+    it 'displays the route information' do
 
-    visit "/routes/#{@route3.id}"
+      visit "/routes/#{@route3.id}"
 
-    expect(page).to have_content(@route3.route_name)
-    expect(page).to have_content(@route3.sport_route)
-    expect(page).to have_content(@route3.trad_route)
-    expect(page).to have_content(@route3.pitches)
-    expect(page).to have_content(@route3.grade)
-    expect(page).to have_content(@route3.created_at)
-    expect(page).to have_content(@route3.updated_at)
-    expect(page).to have_content(@route3.crag_id)
-    expect(page).to_not have_content(@route1.route_name)
-    expect(page).to_not have_content(@route2.route_name)
-    expect(page).to_not have_content(@route4.route_name)
+      expect(page).to have_content(@route3.route_name)
+      expect(page).to have_content(@route3.sport_route)
+      expect(page).to have_content(@route3.trad_route)
+      expect(page).to have_content(@route3.pitches)
+      expect(page).to have_content(@route3.grade)
+      expect(page).to have_content(@route3.created_at)
+      expect(page).to have_content(@route3.updated_at)
+      expect(page).to have_content(@route3.crag_id)
+      expect(page).to_not have_content(@route1.route_name)
+      expect(page).to_not have_content(@route2.route_name)
+      expect(page).to_not have_content(@route4.route_name)
+    end
   end
 
   describe 'link on page for /routes' do
@@ -52,7 +54,7 @@ RSpec.describe 'routes show page' do
     end
   end
   
-  describe 'deleting routes from show page' do
+  describe 'User Story 20 deleting routes from show page' do
     it 'has a button to delete' do
       visit "/routes/#{@route1.id}"
 

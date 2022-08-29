@@ -15,7 +15,7 @@ RSpec.describe Crag, type: :model do
     it { should have_many(:routes) }
   end
 
-  describe "count the routes a crag has" do
+  describe "User Story 7 method count the routes a crag has" do
     it "counts routes" do
       expect(@crag1.count_routes).to eq(2)
     end

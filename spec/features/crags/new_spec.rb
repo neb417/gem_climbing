@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'creates new crag' do
-  describe 'link on page for /crags' do
+  describe 'User Story 11 link on page for /crags' do
     it 'has a link for to create new crag' do
       visit '/crags'
 
@@ -10,6 +10,7 @@ RSpec.describe 'creates new crag' do
 
     it "when 'Create New Crag' link click, take user to crags/new" do
       visit '/crags'
+      
       click_link 'Create New Crag'
 
       expect(current_path).to eq('/crags/new')

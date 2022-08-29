@@ -13,7 +13,7 @@ RSpec.describe 'Create new routes from /crags/:id/routes' do
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
   
-  describe 'Adding new routes to a crag' do
+  describe 'User Story 13 Adding new routes to a crag' do
     it 'has a link to add a new route to the crag' do
       visit "/crags/#{@crag3.id}/routes"
 

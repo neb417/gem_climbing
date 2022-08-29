@@ -11,9 +11,9 @@ class Crag < ApplicationRecord
 
   def self.route_count
     crags = Crag.all
-    @ordered = crags.sort do |crag|
-      crag.count_routes
-    end.reverse
+
+    @ordered = crags.sort_by(crag.count_routes)
+    binding.pry
     @ordered
   end
 

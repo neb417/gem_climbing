@@ -13,7 +13,7 @@ RSpec.describe 'crags index page' do
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
 
-  describe 'Test for index page' do
+  describe 'User Story 3 and User Story 15 index page' do
     it 'displays routes' do
       visit "/routes"
 
@@ -26,7 +26,7 @@ RSpec.describe 'crags index page' do
     end
   end
 
-  describe 'Editing routes from route index page' do
+  describe 'User Story 18 Editing routes from route index page' do
     it 'has a link on route show page to edit route that redirects' do
       visit "/routes"
 
@@ -39,7 +39,7 @@ RSpec.describe 'crags index page' do
     end
   end
 
-  describe 'deleting routes from show page' do
+  describe 'User Story 23 deleting routes from show page' do
     it 'has a button to delete' do
       visit "/routes/"
 
