@@ -1,7 +1,7 @@
 class CragRoutesController < ApplicationController
   def index
     @crag = Crag.find(params[:id])
-    
+
     if params[:alphabetize]
       @crag_routes = @crag.routes.order(:route_name)
     elsif params[:pitches]
@@ -17,8 +17,18 @@ class CragRoutesController < ApplicationController
 
   def create
     crag = Crag.find(params[:id])
-    crag.routes.create!(route_params)
-    redirect_to "/crags/#{crag.id}/routes"
+    # crag.routes.create!(route_params)
+    # redirect_to "/crags/#{crag.id}/routes"
+    new_route = crag.routes.new(route_params)
+    # binding.pry
+    if new_route.save
+      redirect_to "/crags/#{crag.id}/routes"
+    else
+      binding.pry
+      flash[:notice] = "Route not created: Required information missing"
+      redirect_to "/crags/#{crag.id}/routes/new"
+    end
+
   end
 
   private

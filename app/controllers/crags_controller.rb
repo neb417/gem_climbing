@@ -20,8 +20,13 @@ class CragsController < ApplicationController
   end
 
   def create
-    Crag.create!(crag_params)
-    redirect_to '/crags'
+    crag = Crag.new(crag_params)
+    if crag.save
+      redirect_to '/crags'
+    else
+      flash[:notice] = "Crag not created: Required information missing"
+      render :new
+    end
   end
 
   def edit
