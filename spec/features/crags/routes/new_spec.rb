@@ -51,5 +51,41 @@ RSpec.describe 'Create new routes from /crags/:id/routes' do
       expect(page).to have_content(3)
       expect(page).to have_content("5.7")
     end
-  end 
+  end
+
+  describe 'Error handling for not having inputs/incorrect inputs' do
+    it 'has page that displays message of incorrect info' do
+      visit "/crags/#{@crag1.id}/routes/new"
+
+      click_button "Add Route"
+
+      expect(current_path).to eq("/crags/#{@crag1.id}/routes/new")
+      expect(page).to have_content("Route not created: Required information missing")
+    end
+
+    it 'has page that displays message of incorrect info' do
+      visit "/crags/#{@crag1.id}/routes/new"
+
+      fill_in("Route Name", with: "Genisis")
+
+      click_button "Add Route"
+
+      expect(current_path).to eq("/crags/#{@crag1.id}/routes/new")
+      expect(page).to have_content("Route not created: Required information missing")
+    end
+
+    it 'has page that displays message of incorrect info' do
+      visit "/crags/#{@crag1.id}/routes/new"
+
+      fill_in("Route Name", with: "Genisis")
+
+      choose "Is a Sport Route"
+      choose "Not a Trad Route"
+
+      click_button "Add Route"
+
+      expect(current_path).to eq("/crags/#{@crag1.id}/routes/new")
+      expect(page).to have_content("Route Name")
+    end
+  end
 end
