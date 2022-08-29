@@ -1,5 +1,7 @@
 <h1>Crag Name:  <%= @crag.crag_name %> </h1>
-<h3><%= @crag.crag_name %> has <%= @crag.count_routes %> routes. <%= link_to "Routes for #{@crag.crag_name}", "/crags/#{@crag.id}/routes" %></h3>
+<p><strong><%= @crag.crag_name %> has <%= @crag.count_routes %> routes.</strong> 
+    <%= link_to "Routes for #{@crag.crag_name}", "/crags/#{@crag.id}/routes" %>
+</p>
 <p>Reservation Required: <%= @crag.reservation_required %></p>
 <p>Elevation : <%= @crag.elevation%> ft.</p>
 <p> Created on: <%= @crag.created_at%>, Updated on: <%= @crag.updated_at%>

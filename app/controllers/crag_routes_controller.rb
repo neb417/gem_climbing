@@ -1,10 +1,10 @@
 class CragRoutesController < ApplicationController
   def index
     @crag = Crag.find(params[:id])
-    case
-    when params[:alphabetize]
+    
+    if params[:alphabetize]
       @crag_routes = @crag.routes.order(:route_name)
-    when params[:pitches]
+    elsif params[:pitches]
       @crag_routes = @crag.routes.where("pitches >= ?", params[:pitches].to_i)
     else
       @crag_routes = @crag.routes
@@ -21,7 +21,7 @@ class CragRoutesController < ApplicationController
     redirect_to "/crags/#{crag.id}/routes"
   end
 
-private
+  private
 
   def route_params
     params.permit(:route_name, :sport_route, :trad_route, :pitches, :grade)

@@ -9,6 +9,7 @@ RSpec.describe 'crags index page' do
     @crag2 = Crag.create!(crag_name: 'Bell Buttress', reservation_required: false, elevation: 7200, created_at: "2022-08-25 14:28:59")
     @route3 = @crag2.routes.create!(route_name: 'Verve', sport_route: true, trad_route: false, pitches: 1, grade: "5.13c")
     @route4 = @crag2.routes.create!(route_name: 'Cosmosis', sport_route: false, trad_route: true, pitches: 3, grade: "5.9")
+    route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
 
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
@@ -56,6 +57,22 @@ RSpec.describe 'crags index page' do
       click_link "Routes for #{@crag2.crag_name}"
 
       expect(current_path).to eq("/crags/#{@crag2.id}/routes")
+    end
+  end
+
+  describe 'link on page for crag/:id' do
+    it 'has a link for crag/:id' do
+      visit "/crags"
+
+      expect(page).to have_link("#{@crag1.crag_name}")
+      expect(page).to have_link("#{@crag2.crag_name}")
+    end
+
+    it "when 'Routes for Crag' link click, take user to crag/:id/routes" do
+      visit "/crags"
+      click_link "#{@crag2.crag_name}"
+
+      expect(current_path).to eq("/crags/#{@crag2.id}")
     end
   end
 
@@ -113,6 +130,29 @@ RSpec.describe 'crags index page' do
       visit "/routes"
       expect(page).to_not have_content(@route1.route_name)
       expect(page).to have_content(@route3.route_name)
+    end
+  end
+
+  describe '**Extension 1** Sort crags by number of routes' do
+    it 'has a link to sort routes' do
+      visit "/crags"
+
+      expect(page).to have_link("Order Crags by number of Routes")
+
+      click_link "Order Crags by number of Routes"
+
+      expect(current_path).to eq("/crags")
+    end
+
+    xit 'sorts routes by number of routes, high to low' do
+      route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
+
+      visit "/crags"
+
+      click_link "Order Crags by number of Routes" 
+
+      expect(@crag2.crag_name).to appear_before(@crag1.crag_name)
+      expect(@crag1.crag_name).to appear_before(@crag3.crag_name)
     end
   end
 end

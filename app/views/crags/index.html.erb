@@ -1,7 +1,7 @@
 <h1>Gem Crags</h1>
 
 <% @crags.each do |crag| %>
-  <p><strong><%= crag.crag_name %></strong> Created: <%= crag.created_at %>
+  <p><strong><%= link_to "#{crag.crag_name}", "/crags/#{crag.id}" %></strong> Created: <%= crag.created_at %>
       <%= link_to "Edit #{crag.crag_name}", "/crags/#{crag.id}/edit" %> <%= button_to "Delete #{crag.crag_name} and Routes", "/crags/#{crag.id}", method: :delete %>
   </p>
   <p>Reservations Required: <%= crag.reservation_required %></p>
@@ -12,3 +12,4 @@
 <br/>
 <br/>
 <%= link_to "Create New Crag", "/crags/new" %>
+<%= link_to "Order Crags by number of Routes", "/crags?order_by_routes=true" %>

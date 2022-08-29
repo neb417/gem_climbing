@@ -1,6 +1,15 @@
 class CragsController < ApplicationController
+
   def index
     @crags = Crag.order(created_at: :desc)
+    # crags = Crag.all
+    # if params[:order_by_routes]
+    #   binding.pry
+    #   crags.route_count
+    #   @crags = Crag.order("COUNT")
+    # else
+    #   @crags = crags.order(created_at: :desc)
+    # end
   end
 
   def show
@@ -11,7 +20,7 @@ class CragsController < ApplicationController
   end
 
   def create
-    crag = Crag.create!(crag_params)
+    Crag.create!(crag_params)
     redirect_to '/crags'
   end
 
@@ -30,7 +39,8 @@ class CragsController < ApplicationController
     redirect_to "/crags"
   end
 
-private
+  private
+
   def crag_params
     params.permit(:crag_name, :reservation_required, :elevation)
   end
