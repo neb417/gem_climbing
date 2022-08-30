@@ -9,31 +9,36 @@ class Crag < ApplicationRecord
     routes.count
   end
 
-  def self.route_count
-    crags = Crag.all
-    # crags_by_routes = []
-    # crags.each do |crag|
-    #   test = {}
-    #   test[crag.id] = crag.count_routes
-    #   crags_by_routes << test
-    # end
-    # sorted = crags_by_routes.sort_by { |k, v| v }
-    # binding.pry
-    # try = sorted.reverse
-    ordered = []
-    crags.each_with_index do |crag, index|
+  def self.order_by_routes(crags_to_order)
+    sorted = crags_to_order.route_count_hash
+    ordered = crags_to_order.sort_crag_num_of_routes(sorted)
+    @crags = crags_to_order.order_crag_num_of_routes(ordered)
+  end
+
+  def self.route_count_hash
+    @all_crags = Crag.all
+    crag_list = []
+    @all_crags.each_with_index do |crag, index|
       crag_routes = {}
-      crag_routes["id"] = crag.id
-      crag_routes["routes"] = crag.count_routes
-      crag_routes["index"] = index
-      ordered << crag_routes
+      crag_routes[:id] = crag.id
+      crag_routes[:routes] = crag.count_routes
+      crag_routes[:index] = index
+      crag_list << crag_routes
     end
-    sorted = ordered.sort_by { |crag| crag["routes"] }
+    crag_list
+  end
+
+  def self.sort_crag_num_of_routes(crags_to_sort)
+    crags_to_sort.sort_by do |crag|
+      crag[:routes]
+    end
+  end
+
+  def self.order_crag_num_of_routes(crags_to_order)
     sorted_crags = []
-    sorted.each do |item|
-      sorted_crags << crags[item["index"]]
+    crags_to_order.each do |item|
+      sorted_crags << @all_crags[item[:index]]
     end
     sorted_crags.reverse
-    # binding.pry
   end
 end

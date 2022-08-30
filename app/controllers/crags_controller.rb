@@ -2,12 +2,11 @@ class CragsController < ApplicationController
 
   def index
     # @crags = Crag.order(created_at: :desc)
-    all_crags = Crag.all
+    @all_crags = Crag.all
     if params[:order_by_routes]
-      @crags = all_crags.route_count
-      # binding.pry
+      @crags = @all_crags.order_by_routes(@all_crags)
     else
-      @crags = all_crags.order(created_at: :desc)
+      @crags = @all_crags.order(created_at: :desc)
     end
   end
 
