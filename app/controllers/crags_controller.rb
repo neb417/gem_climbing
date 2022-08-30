@@ -1,15 +1,14 @@
 class CragsController < ApplicationController
 
   def index
-    @crags = Crag.order(created_at: :desc)
-    # crags = Crag.all
-    # if params[:order_by_routes]
-    #   binding.pry
-    #   crags.route_count
-    #   @crags = Crag.order("COUNT")
-    # else
-    #   @crags = crags.order(created_at: :desc)
-    # end
+    # @crags = Crag.order(created_at: :desc)
+    all_crags = Crag.all
+    if params[:order_by_routes]
+      @crags = all_crags.route_count
+      # binding.pry
+    else
+      @crags = all_crags.order(created_at: :desc)
+    end
   end
 
   def show
