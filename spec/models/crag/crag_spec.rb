@@ -19,6 +19,10 @@ RSpec.describe Crag, type: :model do
   describe "relationships" do
     it { should have_many(:routes) }
   end
+  describe "validations" do
+    it {should validate_presence_of :crag_name}
+    it {should validate_presence_of :elevation}
+  end
 
   describe "User Story 7 method count the routes a crag has" do
     it "counts routes" do

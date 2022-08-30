@@ -17,4 +17,10 @@ RSpec.describe Route, type: :model do
   describe "relationships" do
     it { should belong_to(:crag) }
   end
+
+  describe 'validations' do
+    it {should validate_presence_of :route_name}
+    it {should validate_presence_of :pitches}
+    it {should validate_presence_of :grade}
+  end
 end
