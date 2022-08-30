@@ -9,7 +9,7 @@ RSpec.describe 'crags index page' do
     @crag2 = Crag.create!(crag_name: 'Bell Buttress', reservation_required: false, elevation: 7200, created_at: "2022-08-25 14:28:59")
     @route3 = @crag2.routes.create!(route_name: 'Verve', sport_route: true, trad_route: false, pitches: 1, grade: "5.13c")
     @route4 = @crag2.routes.create!(route_name: 'Cosmosis', sport_route: false, trad_route: true, pitches: 3, grade: "5.9")
-    route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
+    @route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
 
     @crag3 = Crag.create!(crag_name: 'The Dome', reservation_required: false, elevation: 5200)
   end
@@ -147,12 +147,12 @@ RSpec.describe 'crags index page' do
     end
 
     it 'sorts routes by number of routes, high to low' do
-      route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
+      # route5 = @crag2.routes.create!(route_name: 'Arms Bazaar', sport_route: false, trad_route: true, pitches: 2, grade: "5.12a")
 
       visit "/crags"
 
       click_link "Order Crags by number of Routes" 
-
+save_and_open_page
       expect(@crag2.crag_name).to appear_before(@crag1.crag_name)
       expect(@crag1.crag_name).to appear_before(@crag3.crag_name)
     end

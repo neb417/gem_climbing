@@ -21,14 +21,14 @@ class Crag < ApplicationRecord
     # binding.pry
     # try = sorted.reverse
     ordered = []
-    list = crags.each_with_index do |crag, index|
+    crags.each_with_index do |crag, index|
       crag_routes = {}
       crag_routes["id"] = crag.id
       crag_routes["routes"] = crag.count_routes
       crag_routes["index"] = index
       ordered << crag_routes
     end
-    sorted = ordered.sort_by { |k| k["routes"] }
+    sorted = ordered.sort_by { |crag| crag["routes"] }
     sorted_crags = []
     sorted.each do |item|
       sorted_crags << crags[item["index"]]
