@@ -10,15 +10,14 @@ class Crag < ApplicationRecord
   end
 
   def self.order_by_routes(crags_to_order)
-    sorted = crags_to_order.route_count_hash
+    sorted = crags_to_order.route_count_hash(crags_to_order)
     ordered = crags_to_order.sort_crag_num_of_routes(sorted)
     @crags = crags_to_order.order_crag_num_of_routes(ordered)
   end
 
-  def self.route_count_hash
-    @all_crags = Crag.all
+  def self.route_count_hash(crags_to_order)
     crag_list = []
-    @all_crags.each_with_index do |crag, index|
+    @all_crags = crags_to_order.each_with_index do |crag, index|
       crag_routes = {}
       crag_routes[:id] = crag.id
       crag_routes[:routes] = crag.count_routes

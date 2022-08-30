@@ -28,16 +28,16 @@ RSpec.describe Crag, type: :model do
 
   describe "**Extension 1** model method tests" do
     it "creates list of hashes to reference crag[id], number of routes with index position" do
-      expect(@all_crags.route_count_hash).to eq([{id: @crag1.id, routes: 2, index: 0}, {id: @crag2.id, routes: 3, index: 1}, {id: @crag3.id, routes: 0, index: 2}])
+      expect(@all_crags.route_count_hash(@all_crags)).to eq([{id: @crag1.id, routes: 2, index: 0}, {id: @crag2.id, routes: 3, index: 1}, {id: @crag3.id, routes: 0, index: 2}])
     end
 
     it "sorts the hashes by value, number of routes" do
-      sorted = @all_crags.route_count_hash
+      sorted = @all_crags.route_count_hash(@all_crags)
       expect(@all_crags.sort_crag_num_of_routes(sorted)).to eq([{id: @crag3.id, routes: 0, index: 2}, {id: @crag1.id, routes: 2, index: 0}, {id: @crag2.id, routes: 3, index: 1}])
     end
 
     it "lists all_crags in order by route count" do
-      sorted = @all_crags.route_count_hash
+      sorted = @all_crags.route_count_hash(@all_crags)
       order = @all_crags.sort_crag_num_of_routes(sorted)
 
       expect(@all_crags.order_crag_num_of_routes(order)).to eq([@crag2, @crag1, @crag3])
